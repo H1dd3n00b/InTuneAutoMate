@@ -36,11 +36,9 @@ Please note that all machines listed in the input file will be converted to capi
 If this behavior conflicts with your device naming convention or if you encounter issues due to case sensitivity, you can modify the script's behavior.
 
 Navigate to line 69 in the script:
-
 findmachine = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, machine.upper())))
 
-To accommodate different naming conventions, adjust the line to use the original machine name without converting it to uppercase:
-
+To accommodate different naming conventions, adjust the line by basically removing `.upper()` to use the original machine name without converting it to uppercase:
 findmachine = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, machine)))
 
 Feel free to modify the script according to your requirements and device naming conventions.
@@ -51,3 +49,6 @@ This script has been thoroughly tested on Windows 10 and Windows 11 devices. Ple
 
 **Compatibility Limitation:** 
 The script may not function as intended on mobile devices, including phones, or on other operating systems. It is optimized for Windows environments and their unique configurations.
+
+Additionally, this script requires a visible browser window to execute its *interactive* features. It won't operate in a headless browser environment.
+
