@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from colorama import init, Fore, Style
 import time
@@ -38,19 +39,35 @@ def main():
     driver.get("https://endpoint.microsoft.com")
 
     # Log into InTune
-    accinput = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "i0116")))
-    accinput.send_keys(base64.b64decode(encoded_account).decode("utf-8"))
-    accinput.send_keys(Keys.RETURN)
-    passinput = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "i0118")))
-    passinput.send_keys(base64.b64decode(encoded_password).decode("utf-8"))
-    passinput.send_keys(Keys.RETURN)
-    staysignedin = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "idBtn_Back")))
-    staysignedin.click()
+    try:
+        AccInput = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "i0116")))
+        AccInput.send_keys(base64.b64decode(encoded_account).decode("utf-8"))
+        AccInput.send_keys(Keys.RETURN)
+        PassInput = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "i0118")))
+        PassInput.send_keys(base64.b64decode(encoded_password).decode("utf-8"))
+        PassInput.send_keys(Keys.RETURN)
+        StaySignedIn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "idBtn_Back")))
+        StaySignedIn.click()
+    except TimeoutException:
+        OtherWaysToSignIn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "idA_PWD_SwitchToCredPicker")))
+        OtherWaysToSignIn.click()
+        PasswordSelect = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
+            (By. CSS_SELECTOR, "#credentialList > div:nth-child(3) > div > div")))
+        PasswordSelect.click()
+        PassInput = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "i0118")))
+        PassInput.send_keys(base64.b64decode(encoded_password).decode("utf-8"))
+        PassInput.send_keys(Keys.RETURN)
+        StaySignedIn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "idBtn_Back")))
+        StaySignedIn.click()
 
     # Function to perform actions on each machine
+
     def process_machine(machine):
         devices = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, "_weave_e_58")))
