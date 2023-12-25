@@ -36,6 +36,7 @@ Please note that all machines listed in the input file will be converted to capi
 If this behavior conflicts with your device naming convention or if you encounter issues due to case sensitivity, you can modify the script's behavior.
 
 Navigate to line 69 in the script:
+
 findmachine = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, machine.upper())))
 
 To accommodate different naming conventions, adjust the line to use the original machine name without converting it to uppercase:
