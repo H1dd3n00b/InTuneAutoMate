@@ -39,7 +39,7 @@ Navigate to line 69 in the script:
 
 findmachine = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, machine.upper())))
 
-To accommodate different naming conventions, adjust the line by basically removing `.upper()` to use the original machine name without converting it to uppercase:
+To accommodate different naming conventions, adjust the line by removing `.upper()` to use the original machine name without converting it to uppercase:
 
 findmachine = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, machine)))
 
