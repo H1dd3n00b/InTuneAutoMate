@@ -24,7 +24,8 @@ pip install -r requirements.txt
 4. Run the script:
 python IntuneAutoMate.py <file.txt>
 Replace `<file.txt>` with the path to your text file containing device names, each on a separate line.
-5. Follow the script prompts; you will be asked for an email and password. These credentials will be used to execute the script actions.
+5. Follow the script prompts; you will be asked for an email and password.
+These credentials will be used to execute the script actions.
 ```
 ## 
 
