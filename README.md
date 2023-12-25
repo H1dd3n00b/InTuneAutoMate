@@ -10,6 +10,7 @@ It performs the following actions, in the following order:
 - **Update Windows Defender Security Intelligence, followed by a 3 second pause**
 - **Full Scan**
 - **Quick Scan**
+- **Sync**
 
 The script operates interactively, simulating user actions in the Microsoft Intune environment. Using Selenium's automation features, IntuneAutoMate seamlessly conducts security scans and updates. Simply provide a file listing the machines to be scanned, allowing you the freedom to step away for a coffee break. Upon your return, the scans will be seamlessly completed.
 
