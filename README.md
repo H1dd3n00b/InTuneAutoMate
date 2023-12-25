@@ -52,5 +52,5 @@ This script has been thoroughly tested on Windows 10 and Windows 11 devices. Ple
 **Compatibility Limitation:** 
 The script may not function as intended on mobile devices, including phones, or on other operating systems. It is optimized for Windows environments and their unique configurations.
 
-Additionally, **this script requires a visible browser window to execute its *interactive*** features. It won't operate in a headless browser environment.
+Additionally, **this script requires a visible browser window to execute its *interactive* features**. It won't operate in a headless browser environment.
 
