@@ -71,7 +71,7 @@ def main():
             print(f"{Fore.LIGHTRED_EX}Oopsie, something went wrong!\n{
                 Fore.LIGHTMAGENTA_EX}The script encountered an error:\n{e}\n{Style.RESET_ALL}")
             print(f"{Fore.LIGHTYELLOW_EX}Most likely reason:\n{
-                Fore.LIGHTGREEN_EX}Wrong or non-existent password!{Style.RESET_ALL}")
+                Fore.LIGHTRED_EX}Invalid or non-existent username/password combination!{Style.RESET_ALL}")
             sys.exit()
 
     # Function to perform actions on each machine
