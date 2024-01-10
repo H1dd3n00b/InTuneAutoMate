@@ -51,20 +51,28 @@ def main():
         StaySignedIn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, "idBtn_Back")))
         StaySignedIn.click()
-    except TimeoutException:
-        OtherWaysToSignIn = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "idA_PWD_SwitchToCredPicker")))
-        OtherWaysToSignIn.click()
-        PasswordSelect = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
-            (By. CSS_SELECTOR, "#credentialList > div:nth-child(3) > div > div")))
-        PasswordSelect.click()
-        PassInput = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "i0118")))
-        PassInput.send_keys(base64.b64decode(encoded_password).decode("utf-8"))
-        PassInput.send_keys(Keys.RETURN)
-        StaySignedIn = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "idBtn_Back")))
-        StaySignedIn.click()
+    except TimeoutException as e:
+        try:
+            OtherWaysToSignIn = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "idA_PWD_SwitchToCredPicker")))
+            OtherWaysToSignIn.click()
+            PasswordSelect = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
+                (By. CSS_SELECTOR, "#credentialList > div:nth-child(3) > div > div")))
+            PasswordSelect.click()
+            PassInput = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "i0118")))
+            PassInput.send_keys(base64.b64decode(
+                encoded_password).decode("utf-8"))
+            PassInput.send_keys(Keys.RETURN)
+            StaySignedIn = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "idBtn_Back")))
+            StaySignedIn.click()
+        except TimeoutException:
+            print(f"{Fore.LIGHTRED_EX}Oopsie, something went wrong!\n{
+                Fore.LIGHTMAGENTA_EX}The script encountered an error:\n{e}\n{Style.RESET_ALL}")
+            print(f"{Fore.LIGHTYELLOW_EX}Most likely reason:\n{
+                Fore.LIGHTGREEN_EX}Wrong or non-existent password!{Style.RESET_ALL}")
+            sys.exit()
 
     # Function to perform actions on each machine
 
@@ -121,7 +129,8 @@ def main():
             EC.element_to_be_clickable((By.ID, "_weave_e_40")))
         home.click()
         driver.refresh()
-        print(f"{Fore.YELLOW}Done with {Fore.LIGHTRED_EX}{machine}{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}Done with {Fore.LIGHTRED_EX}{
+              machine}{Style.RESET_ALL}")
 
     # Read machines from the file and process each one
     try:
@@ -130,10 +139,12 @@ def main():
         for machine in machines:
             process_machine(machine)
     except Exception as e:
-        print(f"{Fore.LIGHTRED_EX}Oopsie, something went wrong!\n{Fore.LIGHTMAGENTA_EX}The script encountered an error:\n{e}\n{Style.RESET_ALL}")
+        print(f"{Fore.LIGHTRED_EX}Oopsie, something went wrong!\n{
+              Fore.LIGHTMAGENTA_EX}The script encountered an error:\n{e}\n{Style.RESET_ALL}")
         print(f"{Fore.LIGHTYELLOW_EX}Potential Resolution:\n{Fore.LIGHTGREEN_EX}1. Check your internet connection.\n2. Ensure all necessary elements are present on the page and accessible.\n3. If using a virtual machine, maximize the screen for full visibility of page elements.\n4. Verify that every device in the input file is listed on a separate line.\n5. Close any unnecessary browser tabs/windows to optimize script execution.\n{Style.RESET_ALL}")
 
-    print(f"{Fore.LIGHTGREEN_EX}Thanks for using my script! For updates and more, please visit {Fore.LIGHTRED_EX}https://github.com/H1dd3n00b {Style.RESET_ALL}")
+    print(f"{Fore.LIGHTGREEN_EX}Thanks for using my script! For updates and more, please visit {
+          Fore.LIGHTRED_EX}https://github.com/H1dd3n00b {Style.RESET_ALL}")
     print(f"{Fore.LIGHTGREEN_EX}Have a great day!{Style.RESET_ALL}")
 
 
