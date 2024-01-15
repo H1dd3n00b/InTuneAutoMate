@@ -68,10 +68,10 @@ def main():
                 EC.element_to_be_clickable((By.ID, "idBtn_Back")))
             StaySignedIn.click()
         except TimeoutException:
-            print(f"{Fore.LIGHTRED_EX}Oopsie, something went wrong!\n")
+            print(f"{Fore.LIGHTRED_EX}Oopsie, something went wrong!")
             print(f"{Fore.LIGHTMAGENTA_EX}The script encountered an error:")
             print(f"{e}{Style.RESET_ALL}")
-            print(f"{Fore.LIGHTYELLOW_EX}Most likely reason:\n{Style.RESET_ALL}")
+            print(f"{Fore.LIGHTYELLOW_EX}Most likely reason:{Style.RESET_ALL}")
             print(
                 f"{Fore.LIGHTRED_EX}Invalid or non-existent username/password combination!{Style.RESET_ALL}")
             sys.exit()
@@ -147,7 +147,7 @@ def main():
 
         print(f"{Fore.LIGHTGREEN_EX}Thanks for using my script!")
         print(
-            f"For updates and more, please visit https://github.com/H1dd3n00b {Style.RESET_ALL}")
+            f"For updates and more, please visit {Fore.RED} https://github.com/H1dd3n00b {Style.RESET_ALL}")
         print(f"{Fore.LIGHTGREEN_EX}Have a great day!{Style.RESET_ALL}")
 
 
