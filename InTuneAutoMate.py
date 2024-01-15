@@ -143,7 +143,7 @@ def main():
         print(f"{Fore.LIGHTRED_EX}Oopsie, something went wrong!{Style.RESET_ALL}")
         print(f"{Fore.LIGHTMAGENTA_EX}The script encountered an error:\n")
         print(f"{Fore.LIGHTMAGENTA_EX}{e}\n{Style.RESET_ALL}")
-        print(f"{Fore.LIGHTYELLOW_EX}Potential Resolution:\n{Fore.LIGHTGREEN_EX}1. Check your internet connection.\n2. Ensure all necessary elements are present on the page and accessible.\n3. If using a virtual machine, maximize the screen for full visibility of page elements.\n4. Verify that every device in the input file is listed on a separate line.\n5. Close any unnecessary browser tabs/windows to optimize script execution.\n{Style.RESET_ALL}")
+        print(f"{Fore.LIGHTYELLOW_EX}Potential Resolution:\n{Fore.LIGHTGREEN_EX}1. Check your internet connection.\n2. Ensure all necessary elements are present on the page and accessible.\n3. If using a virtual machine, maximize the screen for full visibility of page elements.\n4. Verify that every device in the input file is listed on a separate line.\n5. Close any unnecessary browser tabs/windows to optimize script execution.{Style.RESET_ALL}")
 
     print(f"{Fore.LIGHTGREEN_EX}\nThanks for using my script!")
     print(f"For updates and more, please visit {Fore.LIGHTRED_EX}https://github.com/H1dd3n00b{Style.RESET_ALL}")
