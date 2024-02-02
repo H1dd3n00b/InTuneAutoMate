@@ -40,31 +40,31 @@ def main():
 
     # Log into InTune
     try:
-        AccInput = WebDriverWait(driver, 10).until(
+        AccInput = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "i0116")))
         AccInput.send_keys(base64.b64decode(encoded_account).decode("utf-8"))
         AccInput.send_keys(Keys.RETURN)
-        PassInput = WebDriverWait(driver, 10).until(
+        PassInput = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "i0118")))
         PassInput.send_keys(base64.b64decode(encoded_password).decode("utf-8"))
         PassInput.send_keys(Keys.RETURN)
-        StaySignedIn = WebDriverWait(driver, 10).until(
+        StaySignedIn = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "idBtn_Back")))
         StaySignedIn.click()
     except TimeoutException as e:
         try:
-            OtherWaysToSignIn = WebDriverWait(driver, 10).until(
+            OtherWaysToSignIn = WebDriverWait(driver, 60).until(
                 EC.element_to_be_clickable((By.ID, "idA_PWD_SwitchToCredPicker")))
             OtherWaysToSignIn.click()
-            PasswordSelect = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
+            PasswordSelect = WebDriverWait(driver, 60).until(EC.element_to_be_clickable(
                 (By. CSS_SELECTOR, "#credentialList > div:nth-child(3) > div > div")))
             PasswordSelect.click()
-            PassInput = WebDriverWait(driver, 10).until(
+            PassInput = WebDriverWait(driver, 60).until(
                 EC.element_to_be_clickable((By.ID, "i0118")))
             PassInput.send_keys(base64.b64decode(
                 encoded_password).decode("utf-8"))
             PassInput.send_keys(Keys.RETURN)
-            StaySignedIn = WebDriverWait(driver, 10).until(
+            StaySignedIn = WebDriverWait(driver, 60).until(
                 EC.element_to_be_clickable((By.ID, "idBtn_Back")))
             StaySignedIn.click()
         except TimeoutException:
@@ -79,55 +79,55 @@ def main():
     # Function to perform actions on each machine
 
     def process_machine(machine):
-        devices = WebDriverWait(driver, 10).until(
+        devices = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "_weave_e_58")))
         devices.click()
-        alldevices = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
+        alldevices = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'div[data-telemetryname="Menu-mDMDevicesPreview"]')))
         alldevices.click()
-        iframe1 = WebDriverWait(driver, 10).until(
+        iframe1 = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "_react_frame_2")))
         driver.switch_to.frame(iframe1)
-        intunesearch = WebDriverWait(driver, 10).until(
+        intunesearch = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "SearchBox5")))
         intunesearch.click()
         intunesearch.send_keys(machine)
-        findmachine = WebDriverWait(driver, 10).until(
+        findmachine = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.LINK_TEXT, machine.upper())))
         findmachine.click()
         driver.switch_to.default_content()
         time.sleep(2)
-        moreoptions = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
+        moreoptions = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'li[class="azc-toolbar-item azc-toolbarButton azc-toolbar-item-overflow fxs-commandBar-item fxs-commandBar-item-expandList"]')))
         moreoptions.click()
-        updatewindowsthreatintelligence = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
+        updatewindowsthreatintelligence = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'div[title="Update Windows Defender security intelligence"]')))
         updatewindowsthreatintelligence.click()
-        updatewindowsthreatintelligenceyes = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
+        updatewindowsthreatintelligenceyes = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'div[title="Yes"]')))
         updatewindowsthreatintelligenceyes.click()
         time.sleep(3)
-        quickscan = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
+        quickscan = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'li[title="Quick scan"]')))
         time.sleep(1)
         quickscan.click()
-        quickscanyes = WebDriverWait(driver, 10).until(
+        quickscanyes = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'div[title="Yes"]')))
         quickscanyes.click()
         time.sleep(1)
-        fullscan = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
+        fullscan = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'li[title="Full scan"]')))
         fullscan.click()
-        fullscanyes = WebDriverWait(driver, 10).until(
+        fullscanyes = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'div[title="Yes"]')))
         fullscanyes.click()
-        sync = WebDriverWait(driver, 10).until(
+        sync = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'li[title="Sync"]')))
         sync.click()
-        syncupdateyes = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
+        syncupdateyes = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'div[title="Yes"]')))
         syncupdateyes.click()
-        home = WebDriverWait(driver, 10).until(
+        home = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "_weave_e_40")))
         home.click()
         driver.refresh()
