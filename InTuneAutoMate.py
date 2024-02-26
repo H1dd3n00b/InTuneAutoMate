@@ -123,6 +123,9 @@ def main():
         syncupdateyes = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'div[title="Yes"]')))
         syncupdateyes.click()
+        home = WebDriverWait(driver, 60).until(
+            EC.element_to_be_clickable((By.ID, "_weave_e_40")))
+        home.click()
         driver.refresh()
         print(f"{Fore.YELLOW}Done with{Fore.LIGHTRED_EX} {machine}")
 
