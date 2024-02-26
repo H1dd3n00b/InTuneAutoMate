@@ -36,7 +36,7 @@ def main():
     chrome_options.add_argument("--log-level=3")
     driver = webdriver.Chrome(chrome_options)
     driver.maximize_window()
-    driver.get("https://endpoint.microsoft.com")
+    driver.get("https://intune.microsoft.com")
 
     # Log into InTune
     try:
@@ -79,14 +79,12 @@ def main():
     # Function to perform actions on each machine
 
     def process_machine(machine):
-        devices = WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.ID, "_weave_e_58")))
-        devices.click()
-        alldevices = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
-            By.CSS_SELECTOR, 'div[data-telemetryname="Menu-mDMDevicesPreview"]')))
-        alldevices.click()
+        time.sleep(1)
+        driver.get(
+            "https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/allDevices")
         iframe1 = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "_react_frame_2")))
+        iframe1.click()
         driver.switch_to.frame(iframe1)
         intunesearch = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.ID, "SearchBox5")))
@@ -107,29 +105,24 @@ def main():
             By.CSS_SELECTOR, 'div[title="Yes"]')))
         updatewindowsthreatintelligenceyes.click()
         time.sleep(3)
-        quickscan = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
-            By.CSS_SELECTOR, 'li[title="Quick scan"]')))
-        time.sleep(1)
-        quickscan.click()
-        quickscanyes = WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'div[title="Yes"]')))
-        quickscanyes.click()
-        time.sleep(1)
         fullscan = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'li[title="Full scan"]')))
         fullscan.click()
         fullscanyes = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'div[title="Yes"]')))
         fullscanyes.click()
+        quickscan = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
+            By.CSS_SELECTOR, 'li[title="Quick scan"]')))
+        quickscan.click()
+        quickscanyes = WebDriverWait(driver, 60).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'div[title="Yes"]')))
+        quickscanyes.click()
         sync = WebDriverWait(driver, 60).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'li[title="Sync"]')))
         sync.click()
         syncupdateyes = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((
             By.CSS_SELECTOR, 'div[title="Yes"]')))
         syncupdateyes.click()
-        home = WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.ID, "_weave_e_40")))
-        home.click()
         driver.refresh()
         print(f"{Fore.YELLOW}Done with{Fore.LIGHTRED_EX} {machine}")
 
@@ -146,7 +139,8 @@ def main():
         print(f"{Fore.LIGHTYELLOW_EX}Potential Resolution:\n{Fore.LIGHTGREEN_EX}1. Check your internet connection.\n2. Ensure all necessary elements are present on the page and accessible.\n3. If using a virtual machine, maximize the screen for full visibility of page elements.\n4. Verify that every device in the input file is listed on a separate line.\n5. Close any unnecessary browser tabs/windows to optimize script execution.{Style.RESET_ALL}")
 
     print(f"{Fore.LIGHTGREEN_EX}\nThanks for using my script!")
-    print(f"For updates and more, please visit {Fore.LIGHTRED_EX}https://github.com/H1dd3n00b{Style.RESET_ALL}")
+    print(f"For updates and more, please visit {
+          Fore.LIGHTRED_EX}https://github.com/H1dd3n00b{Style.RESET_ALL}")
     print(f"{Fore.LIGHTGREEN_EX}Have a great day!{Style.RESET_ALL}")
 
 
