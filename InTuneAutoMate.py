@@ -83,7 +83,7 @@ def main():
         driver.get(
             "https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/allDevices")
         iframe1 = WebDriverWait(driver, 60).until(
-            EC.element_to_be_clickable((By.ID, "_react_frame_2")))
+            EC.element_to_be_clickable((By.ID, "_react_frame_1")))
         iframe1.click()
         driver.switch_to.frame(iframe1)
         intunesearch = WebDriverWait(driver, 60).until(
